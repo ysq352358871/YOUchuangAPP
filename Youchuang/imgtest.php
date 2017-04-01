@@ -1,0 +1,14 @@
+<?php
+header("content-type:image/png");
+$img=imagecreatetruecolor(200,200);
+$bgColor=imagecolorallocate($img,255,255,0);
+imagefill($img,0,0,$bgColor);
+$fontColor=imagecolorallocate($img,0,0,0);
+$font="Roboto-Bold-webfont.ttf";
+$arr=imagettfbbox(20,0,$font,"yangss");
+$w=$arr[2]-$arr[0];
+$h=$arr[1]-$arr[5];
+imagettftext($img,20,0,(200-$w)/2,(200-$h)/2+$h,$fontColor,$font,"yangss");
+$line=imagecolorallocate($img,0,0,0);
+imagedashedline($img,100,50,200,200,$line);
+imagepng($img);
